@@ -1,7 +1,7 @@
 package com.example.playlist_api.security;
 
-import com.example.playlist.model.AppUser;
-import com.example.playlist.repository.AppUserRepository;
+import com.example.playlist_api.model.AppUser;
+import com.example.playlist_api.repository.AppUserRepository;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

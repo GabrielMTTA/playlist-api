@@ -1,6 +1,6 @@
 package com.example.playlist_api.security;
 
-import com.example.playlist.repository.AppUserRepository;
+import com.example.playlist_api.repository.AppUserRepository;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DbUserDetailsService {
+public class DbUserDetailsService implements UserDetailsService {
 
     private final AppUserRepository repository;
 

@@ -1,7 +1,5 @@
 package com.example.playlist_api.model;
 
-import java.security.Identity;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -9,13 +7,13 @@ import jakarta.persistence.*;
 public class AppUser {
     
     @Id
-    @GeneratedValue(strategy =  generationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
     private String username;
 
-    @column(nullable = false)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -25,7 +23,7 @@ public class AppUser {
 
     public AppUser(String username, String password, String role){
         this.username = username;
-        this.pasword = password;
+        this.password = password;
         this.role = role;
     }
 

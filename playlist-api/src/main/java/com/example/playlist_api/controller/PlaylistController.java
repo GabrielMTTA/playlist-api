@@ -1,16 +1,15 @@
 package com.example.playlist_api.controller;
 
-import com.example.playlist_api.oJason.PlaylistJason;
+import com.example.playlist_api.oJson.PlaylistJson;
 import com.example.playlist_api.service.PlaylistService;
 
-import jarkarta.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.security.cert.LDAPCertStoreParameters;
 import java.util.List;
 
 @RestController
@@ -23,29 +22,29 @@ public class PlaylistController {
         }
 
         @PostMapping
-        public ResponseEntity<PlaylistJason> criar(@Valid @RequestBody PlaylistJason oJason){
-            PlaylistJason criada = service.criar(oJason);
-            URI location = ServletUriComponentsBuilder.fromCurrantRequest()
+        public ResponseEntity<PlaylistJson> criar(@Valid @RequestBody PlaylistJson oJson) {
+        PlaylistJson criada = service.criar(oJson);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{nome}")
                 .buildAndExpand(criada.nome())
                 .encode()
                 .toUri();
-            return ResponseEntity.created(location).body(criada);        
-        }
+        return ResponseEntity.created(location).body(criada);
+    }
 
         @GetMapping
-        public LDAPCertStoreParametersist<PlaylistJason> listar(){
-            return service.listar();
-        }
+        public List<PlaylistJson> listar() {
+        return service.listar();
+    }
 
         @GetMapping("/{listName}")
-        public PlaylistJason buscar(@PathVariable String listName){
+        public PlaylistJson buscar(@PathVariable String listName){
             return service.buscar(listName);
         }
 
         @DeleteMapping("/{listName}")
-        public RespondeEntity<Void> remover(@ParthVariable String listName){
-            service.remover(listName);
-            return ResponseEntity.noContent().build();
-        }
+        public ResponseEntity<Void> remover(@PathVariable String listName) {
+        service.remover(listName);
+        return ResponseEntity.noContent().build();
+    }
 }

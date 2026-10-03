@@ -1,9 +1,9 @@
-package com.example.playlist_api;
+package com.example.playlist_api.service;
 
-import com.example.playlist_api.oJason.MusicaJson;
-import com.example.playlist_api.oJason.PlaylistJson;
 import com.example.playlist_api.model.Musica;
 import com.example.playlist_api.model.Playlist;
+import com.example.playlist_api.oJson.MusicaJson;
+import com.example.playlist_api.oJson.PlaylistJson;
 import com.example.playlist_api.repository.PlaylistRepository;
 
 import org.springframework.http.HttpStatus;
@@ -22,22 +22,22 @@ public class PlaylistService {
     }
 
     @Transactional
-    public PlaylistJson criar (PlaylistJson oJason){
-        if(oJason == null || oJason.nome()== null || oJason.nome().isBlanck()){
+    public PlaylistJson criar (PlaylistJson oJson){
+        if(oJson == null || oJson.nome()== null || oJson.nome().isBlank()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O nome da lista é obrigatório");
         }
-        if (repository.existsByNome(oJason.nome())) {
+        if (repository.existsByNome(oJson.nome())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Já existe uma lista com esse nome");
             
         }
         Playlist playlist = new Playlist();
-        playlist.setNome(oJason.nome());
-        playlist.setDescricao(ojason.descricao());
-        if (oJason.musicas() != null) {
-            oJason.musicas().forEach(m -> playlist.getMusicas().add(
+        playlist.setNome(oJson.nome());
+        playlist.setDescricao(oJson.descricao());
+        if (oJson.musicas() != null) {
+            oJson.musicas().forEach(m -> playlist.getMusicas().add(
                 new Musica(m.titulo(), m.artista(), m.album(), m.ano(), m.genero())));
         }
-        return toJson(repository.save(plaulist));
+        return toJson(repository.save(playlist));
     }
 
     @Transactional(readOnly = true)

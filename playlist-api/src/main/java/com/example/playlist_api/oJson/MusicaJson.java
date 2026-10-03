@@ -1,4 +1,4 @@
-package com.example.playlist_api.oJason;
+package com.example.playlist_api.oJson;
 
 import jakarta.validation.constraints.NotBlank;
 
