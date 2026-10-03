@@ -1,0 +1,284 @@
+{
+  "info": {
+    "name": "Playlist API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "POST /lists (criar - 201)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/lists",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Lista 1\",\n  \"descricao\": \"Lista de musicas do Spotify\",\n  \"musicas\": [\n    {\n      \"titulo\": \"Imagine\",\n      \"artista\": \"John Lennon\",\n      \"album\": \"Imagine\",\n      \"ano\": 1971,\n      \"genero\": \"Rock\"\n    },\n    {\n      \"titulo\": \"Bohemian Rhapsody\",\n      \"artista\": \"Queen\",\n      \"album\": \"A Night at the Opera\",\n      \"ano\": 1975,\n      \"genero\": \"Rock\"\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "POST /lists (nome nulo - 400)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/lists",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"descricao\": \"sem nome\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET /lists (todas)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /lists/{listName} (200)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists/Lista%201",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists",
+            "Lista%201"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /lists/{listName} (404)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists/inexistente",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists",
+            "inexistente"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE /lists/{listName} (ADMIN - 204)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "admin",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "admin123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists/Lista%201",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists",
+            "Lista%201"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE /lists/{listName} (USER - 403)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "user",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "user123",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists/Lista%201",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists",
+            "Lista%201"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /lists (sem credenciais - 401)",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "x",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "x",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/lists",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "lists"
+          ]
+        }
+      }
+    }
+  ]
+}
