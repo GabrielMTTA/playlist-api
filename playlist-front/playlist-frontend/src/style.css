@@ -1,0 +1,107 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f5f7;
+  color: #1f2430;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+h1 { font-size: 1.6rem; margin-bottom: 4px; }
+h2 { font-size: 1.1rem; margin: 0 0 12px; }
+
+.card {
+  background: #fff;
+  border: 1px solid #e2e4ea;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+label:first-child { margin-top: 0; }
+
+input, select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #c9cdd6;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+.row > * { flex: 1; }
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: #2f6fed;
+  color: #fff;
+  margin-top: 14px;
+}
+button:hover { background: #2457c5; }
+button.secondary { background: #e2e4ea; color: #1f2430; }
+button.secondary:hover { background: #cfd3dc; }
+button.danger { background: #d64545; }
+button.danger:hover { background: #b93838; }
+button.small { padding: 5px 10px; font-size: 0.8rem; margin-top: 0; }
+
+.musica-row {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 1.3fr 0.8fr 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.musica-row input { margin: 0; }
+
+.feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  white-space: pre-wrap;
+}
+.feedback.ok { background: #e4f6ea; color: #1d6b3b; border: 1px solid #b8e6c6; }
+.feedback.err { background: #fdeaea; color: #a32a2a; border: 1px solid #f3b9b9; }
+
+.playlist-item {
+  border: 1px solid #e2e4ea;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.playlist-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.playlist-item-header strong { font-size: 1rem; }
+.musica-tag {
+  display: inline-block;
+  background: #eef1f8;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  margin: 4px 4px 0 0;
+}
+.muted { color: #6b7280; font-size: 0.85rem; }
